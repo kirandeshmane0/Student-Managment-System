@@ -4,6 +4,8 @@
 <html>
 <head>
 
+
+
 <meta charset="ISO-8859-1">
 <title>Add Student</title>
 </head>
@@ -23,24 +25,42 @@ function doValidate(){
 	var nameMessage;
 	var courseMessage;
 	
-	if(document.getElementById("rollNumberMsg").innerHTML !=""){
-		
+	if(document.getElementById("rollNumberMsg").innerHTML !="")
+	{
+		document.getElementById("rollNumberMsg").innerHTML ="";
+	}
+	if(document.getElementById("nameMsg").innerHTML !="")
+	{
+		document.getElementById("nameMsg").innerHTML ="";
+	}
+	if(document.getElementById("courseMsg").innerHTML !="")
+	{
+		document.getElementById("courseMsg").innerHTML ="";
 	}
 	
 	if(rollNumber ==""){
 		rollNumberStatus = false;
-		rollNumberMsg ="*Roll Number should not be empty"
-		document.getElementById("rollNumberMsg").innerHTML = rollNumberMsg;
+		rollNumberMsg ="*Roll Number should not be empty";
+		var spanEle = document.getElementById("rollNumberMsg");
+		spanEle.style.color ="red";
+		spanEle.innerHTML = rollNumberMsg;
+		//document.getElementById("rollNumberMsg").innerHTML = rollNumberMsg;
 	}
 	if(name ==""){
 		nameStatus = false;
-		nameMsg ="*Name should not be empty"  
-		document.getElementById("nameMsg").innerHTML = nameMsg;
+		nameMsg ="*Name should not be empty";
+		var spanEle = document.getElementById("nameMsg");
+		spanEle.style.color ="red";
+		spanEle.innerHTML = nameMsg;
+		//document.getElementById("nameMsg").innerHTML = nameMsg;
 	}
 	if(course ==""){
 		courseStatus = false;
-		courseMsg ="*Course should not be empty"
-			document.getElementById("courseMsg").innerHTML = courseMsg;
+		courseMsg ="*Course should not be empty";
+		var spanEle = document.getElementById("courseMsg");
+		spanEle.style.color ="red";
+		spanEle.innerHTML = courseMsg;
+		//document.getElementById("courseMsg").innerHTML = courseMsg;
 	}
 	if(rollNumberStatus == false || nameStatus == false || courseStatus == false){
 	return false;}
@@ -49,12 +69,16 @@ function doValidate(){
 
 </script>
 
+<% 
+String msg =(String)request.getAttribute("msg");
 
+%>
 
 <div><%@ include file = "Header.html" %></div>
 <div class ="container">
 <center>  
 <h1>Add Student</h1>
+<%= msg%>
 <form action ="./AddStudentController" name = "student_form" method ="post" onsubmit =" return doValidate()">
 <table>
 <tr><td>Student Roll Number</td><td><input type = "text" name = "roll_number"><span id = "rollNumberMsg"></span></td></tr>

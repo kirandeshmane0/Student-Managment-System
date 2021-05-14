@@ -4,6 +4,14 @@
 <html>
 <head>
 
+<style>
+body{
+		background-image: url(""images/pic1.jfif"");
+	
+	}
+
+
+</style>
 
 
 <meta charset="ISO-8859-1">
@@ -71,19 +79,22 @@ function doValidate(){
 
 <% 
 String msg =(String)request.getAttribute("msg");
-
+if(msg == null){
+	msg ="";
+}
 %>
 
 <div><%@ include file = "Header.html" %></div>
 <div class ="container">
 <center>  
 <h1>Add Student</h1>
-<%= msg%>
+<h4 style ="color:green"><%= msg%></h4>
 <form action ="./AddStudentController" name = "student_form" method ="post" onsubmit =" return doValidate()">
+
 <table>
 <tr><td>Student Roll Number</td><td><input type = "text" name = "roll_number"><span id = "rollNumberMsg"></span></td></tr>
 <tr><td>Student name</td><td><input type = "text" name = "name"><span id = "nameMsg"></span></td></tr>
-<tr><td>Gender</td><td><input name = "gender" checked ="checked" male" type ="radio"> Male &nbsp;&nbsp;&nbsp;<input type ="radio" name ="gender" value ="female">Female</td></tr>
+<tr><td>Gender</td><td><input name = "gender" checked ="checked "  value ="male" type ="radio"> Male &nbsp;&nbsp;&nbsp;<input type ="radio" name ="gender" value ="female">Female</td></tr>
 <tr><td>Course</td><td><select name ="course">
 <option value ="">----select----</option>
 <option value = "Java">Java</option>

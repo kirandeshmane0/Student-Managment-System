@@ -25,9 +25,10 @@ public class StudentDao {
 			ps.setString(2, studentBo.getName());
 			ps.setString(3, studentBo.getGender());
 			ps.setString(4, studentBo.getCourse());
-			i = ps.executeUpdate();
+			i = ps.executeUpdate(); 
 			
-		}catch(Exception e){
+		}
+		catch(Exception e){
 			e.printStackTrace();
 			}
 		return i;

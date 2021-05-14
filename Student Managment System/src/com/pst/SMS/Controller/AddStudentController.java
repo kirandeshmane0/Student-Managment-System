@@ -36,7 +36,7 @@ public class AddStudentController extends HttpServlet {
 		 int i = studentService.saveStudent(studentVo);
 		
 		if (i !=0) {
-			String msg = "Successfuly added";
+			String msg = "Successfully added";
 			request.setAttribute("msg", msg);
 			request.getRequestDispatcher("./Add_Student.jsp").forward(request, response);
 		}
